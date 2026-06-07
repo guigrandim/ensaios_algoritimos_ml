@@ -44,12 +44,55 @@ Repositório de ensaios comparativos de algoritmos de machine learning organizad
 
 ### Ferramentas Utilizadas
 
-- 🐍 Python 3.11
-- 📦 Scikit-learn
+- 🐍 Python 3.10+
+- 📦 Scikit-learn, XGBoost, LightGBM
+- 🌐 Streamlit + Plotly (app interativo)
 
 ---
 
-## 3. Desenvolvimento
+## 3. App Interativo — ML Trial Explorer
+
+Um app Streamlit permite explorar e re-executar os ensaios em tempo real, sem abrir notebooks.
+
+### Como executar
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+### Funcionalidades
+
+| Página | Algoritmos | Controles |
+|--------|-----------|-----------|
+| **Classificação** | KNN, Decision Tree, Random Forest, Logistic Regression | Sliders de hiperparâmetros |
+| **Regressão** | 12 algoritmos (Linear, Lasso, Ridge, ElasticNet, Polynomial ×3, DT, RF, XGBoost, LightGBM) | Sliders de hiperparâmetros |
+| **Clusterização** | KMeans, Affinity Propagation | Sliders de hiperparâmetros |
+
+- Selecione o algoritmo → curva de performance carrega automaticamente (cacheada por sessão)
+- Ajuste os sliders → destaque na curva atualiza em tempo real, sem re-treinar
+- Clique em **Executar Ensaio** → quadro comparativo (Treino Default / Validação Default / Treino Tunado / Validação Tunada / Teste Final)
+
+### Estrutura do código
+
+```
+ml_trials_algorithm/
+├── app.py                      # home page
+├── pages/
+│   ├── 1_Classificacao.py
+│   ├── 2_Regressao.py
+│   └── 3_Clusterizacao.py
+├── experiments/
+│   ├── classification.py       # lógica ML pura — sem dependência de Streamlit
+│   ├── regression.py
+│   └── clustering.py
+├── tests/                      # 25 testes unitários (pytest)
+└── requirements.txt
+```
+
+---
+
+## 4. Desenvolvimento
 
 **Estratégia da Solução:** Para ensaiar os algoritmos de Machine Learning, foram escritos códigos em Python para treinar cada um dos algoritmos e realizar variações dos principais parâmetros de cada algoritmo para ajuste de overfitting e underfitting, observando a métrica final.
 
