@@ -6,9 +6,27 @@ Repositório de ensaios comparativos de algoritmos de machine learning organizad
 
 ## 1. Problema de Negócio
 
-**Descrição:** A empresa Data Money acredita que a expertise no treinamento e ajuste fino dos algoritmos, feito pelos Cientistas de Dados da empresa, é o principal motivo dos ótimos resultados que as consultorias vêm entregando aos seus clientes.
+**Contexto:**
+- A empresa Data Money atua com consultorias em Ciência de Dados
+- Acredita que a **expertise no treinamento e ajuste fino dos algoritmos** é o diferencial competitivo que entrega ótimos resultados aos clientes
 
-**Objetivo:** Realizar ensaios com algoritmos de Classificação, Regressão e Clusterização para estudar a mudança de comportamento da performance à medida que os valores dos principais parâmetros de controle de overfitting e underfitting mudam.
+**Objetivo:**
+- Realizar **ensaios experimentais** com algoritmos de:
+  - **Classificação**
+  - **Regressão**
+  - **Clusterização**
+- Estudar como a **performance muda** à medida que os principais **parâmetros de controle de overfitting e underfitting** são alterados
+
+**O que se busca entender:**
+- Como cada algoritmo se comporta em diferentes configurações de parâmetros
+- O ponto de equilíbrio entre **underfitting** (modelo simples demais) e **overfitting** (modelo complexo demais)
+- Quais parâmetros têm maior impacto na generalização do modelo
+- Como replicar o conhecimento adquirido para futuras consultorias
+
+**Valor gerado:**
+- Documentar empiricamente o comportamento dos algoritmos
+- Criar um **guia interno** de boas práticas para tuning de modelos
+- Fundamentar a expertise da equipe com evidências práticas e reproduzíveis
 
 ---
 
