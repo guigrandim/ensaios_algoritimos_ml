@@ -1,5 +1,8 @@
 # Ensaios de Algoritmos de Machine Learning
 
+![Python](https://img.shields.io/badge/python-3.10%2B-blue?logo=python&logoColor=white)
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+
 Repositório de ensaios comparativos de algoritmos de machine learning organizados em três categorias: **Classificação**, **Regressão** e **Clusterização**.
 
 <p align="center">
@@ -41,7 +44,7 @@ Repositório de ensaios comparativos de algoritmos de machine learning organizad
 | Categoria | Algoritmos | Métricas de Performance |
 |-----------|-----------|------------------------|
 | **Classificação** | KNN, Decision Tree, Random Forest, Logistic Regression | Accuracy, Precision, Recall, F1-Score |
-| **Regressão** | Linear Regression ( Lasso, Ridge, ElasticNet), Polynomial (Lasso, Ridge, ElasticNet), Decision Tree, Random Forest, XGBoost, LightGBM | R², MSE, RMSE, MAE, MAPE |
+| **Regressão** | Linear Regression (Lasso, Ridge, ElasticNet), Polynomial (Lasso, Ridge, ElasticNet), Decision Tree, Random Forest, XGBoost, LightGBM | R², MSE, RMSE, MAE, MAPE |
 | **Clusterização** | K-Means, Affinity Propagation | Silhouette Score |
 
 ### Ferramentas Utilizadas
@@ -52,7 +55,69 @@ Repositório de ensaios comparativos de algoritmos de machine learning organizad
 
 ---
 
-## 3. Desenvolvimento
+## 3. Dados
+
+### Classificação — Airline Passenger Satisfaction
+
+Dataset público com avaliações de passageiros de companhia aérea, incluindo características do voo e notas de satisfação por serviço.
+
+| Atributo | Valor |
+|----------|-------|
+| **Amostras totais** | 129.487 (treino: 72.515 / validação: 31.079 / teste: 25.893) |
+| **Features** | 24 (dados demográficos, características do voo e avaliações de serviço a bordo) |
+| **Target** | `satisfaction` — binário: 0 = insatisfeito, 1 = satisfeito |
+| **Tipo de problema** | Classificação binária |
+
+<details>
+<summary>Features disponíveis</summary>
+
+`customer_type`, `age`, `class`, `flight_distance`, `inflight_wifi_service`, `departure_arrival_time_convenient`, `ease_of_online_booking`, `gate_location`, `food_and_drink`, `online_boarding`, `seat_comfort`, `inflight_entertainment`, `on_board_service`, `leg_room_service`, `baggage_handling`, `checkin_service`, `inflight_service`, `cleanliness`, `departure_delay_in_minutes`, `arrival_delay_in_minutes`, `gender_Female`, `gender_Male`, `type_of_travel_business_travel`, `type_of_travel_personal_travel`
+
+</details>
+
+---
+
+### Regressão — Spotify Song Popularity
+
+Dataset com atributos de áudio extraídos pela API do Spotify, com o objetivo de prever a popularidade de músicas.
+
+| Atributo | Valor |
+|----------|-------|
+| **Amostras totais** | 18.835 (treino: 10.547 / validação: 4.521 / teste: 3.767) |
+| **Features** | 13 (atributos de áudio extraídos da API do Spotify) |
+| **Target** | `song_popularity` — contínuo, escala 0–100 |
+| **Tipo de problema** | Regressão |
+
+<details>
+<summary>Features disponíveis</summary>
+
+`song_duration_ms`, `acousticness`, `danceability`, `energy`, `instrumentalness`, `key`, `liveness`, `loudness`, `audio_mode`, `speechiness`, `tempo`, `time_signature`, `audio_valence`
+
+</details>
+
+---
+
+### Clusterização — Wine Dataset
+
+Dataset clássico com medições químicas de amostras de vinho, sem rótulos, usado para descoberta de agrupamentos naturais.
+
+| Atributo | Valor |
+|----------|-------|
+| **Amostras totais** | 178 (sem split — aprendizado não supervisionado) |
+| **Features** | 13 (propriedades químicas do vinho) |
+| **Target** | Nenhum (não supervisionado) |
+| **Tipo de problema** | Clusterização |
+
+<details>
+<summary>Features disponíveis</summary>
+
+`alcohol`, `malic_acid`, `ash`, `ash_alcanity`, `magnesium`, `total_phenols`, `flavanoids`, `nonflavanoid_phenols`, `proanthocyanins`, `color_intensity`, `hue`, `od280`, `proline`
+
+</details>
+
+---
+
+## 4. Desenvolvimento
 
 **Estratégia da Solução:** Para ensaiar os algoritmos de Machine Learning, foram escritos códigos em Python para treinar cada um dos algoritmos e realizar variações dos principais parâmetros de cada algoritmo para ajuste de overfitting e underfitting, observando a métrica final.
 
@@ -67,17 +132,17 @@ Repositório de ensaios comparativos de algoritmos de machine learning organizad
 | **Passo 5** | Unir os dados de treinamento e validação |
 | **Passo 6** | Retreinar o algoritmo com a união dos dados e os melhores parâmetros encontrados |
 | **Passo 7** | Medir a performance final no conjunto de teste |
-| **Passo 9** | Quadro Comparativo — análise diagnóstica completa do ensaio |
+| **Passo 8** | Quadro Comparativo — análise diagnóstica completa do ensaio |
 
 ---
 
-## 4. Estrutura do Projeto (Notebooks)
+## 5. Estrutura do Projeto (Notebooks)
 
 ```
 ml_trials_algorithm/
 ├── notebooks/
 │   ├── classificacao/       # KNN, Decision Tree, Logistic Regression, Random Forest
-│   ├── regressao/           # Linear, Lasso, Ridge, ElasticNet, Polynomial, Lasso, Ridge, ElasticNet, Decision Tree, Random Forest, XGBoost, LightGBM
+│   ├── regressao/           # Linear, Lasso, Ridge, ElasticNet, Polynomial, Decision Tree, Random Forest, XGBoost, LightGBM
 │   └── clusterizacao/       # KMeans, Affinity Propagation
 └── dataset/
     ├── classification_datasets/
@@ -92,9 +157,42 @@ ml_trials_algorithm/
         └── a_traning/       # X_dataset.csv (sem split — unsupervised)
 ```
 
+### Notebooks — Classificação
+
+| Notebook | Abrir |
+|----------|-------|
+| KNN | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/guigrandim/ensaios_algoritimos_ml/blob/main/notebooks/classificacao/ensaios_ml_knn.ipynb) |
+| Decision Tree | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/guigrandim/ensaios_algoritimos_ml/blob/main/notebooks/classificacao/ensaios_ml_decisiontree.ipynb) |
+| Random Forest | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/guigrandim/ensaios_algoritimos_ml/blob/main/notebooks/classificacao/ensaios_ml_randomforest.ipynb) |
+| Logistic Regression | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/guigrandim/ensaios_algoritimos_ml/blob/main/notebooks/classificacao/ensaios_ml_logistc_regression.ipynb) |
+
+### Notebooks — Regressão
+
+| Notebook | Abrir |
+|----------|-------|
+| Linear Regression | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/guigrandim/ensaios_algoritimos_ml/blob/main/notebooks/regressao/ensaios_ml_linear_regression.ipynb) |
+| Linear Regression — Lasso | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/guigrandim/ensaios_algoritimos_ml/blob/main/notebooks/regressao/ensaios_ml_linear_regression_lasso.ipynb) |
+| Linear Regression — Ridge | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/guigrandim/ensaios_algoritimos_ml/blob/main/notebooks/regressao/ensaios_ml_linear_regression_ridge.ipynb) |
+| Linear Regression — ElasticNet | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/guigrandim/ensaios_algoritimos_ml/blob/main/notebooks/regressao/ensaios_ml_linear_regression_elastic_net.ipynb) |
+| Polynomial Regressor | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/guigrandim/ensaios_algoritimos_ml/blob/main/notebooks/regressao/ensaios_ml_polynomial_regressor.ipynb) |
+| Polynomial Regressor — Lasso | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/guigrandim/ensaios_algoritimos_ml/blob/main/notebooks/regressao/ensaios_ml_polynomial_regressor_lasso.ipynb) |
+| Polynomial Regressor — Ridge | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/guigrandim/ensaios_algoritimos_ml/blob/main/notebooks/regressao/ensaios_ml_polynomial_regressor_ridge.ipynb) |
+| Polynomial Regressor — ElasticNet | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/guigrandim/ensaios_algoritimos_ml/blob/main/notebooks/regressao/ensaios_ml_polynomial_regressor_elastic_net.ipynb) |
+| Decision Tree Regressor | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/guigrandim/ensaios_algoritimos_ml/blob/main/notebooks/regressao/ensaios_ml_decision_tree_regression.ipynb) |
+| Random Forest Regressor | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/guigrandim/ensaios_algoritimos_ml/blob/main/notebooks/regressao/ensaios_ml_random_forest_regression.ipynb) |
+| XGBoost | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/guigrandim/ensaios_algoritimos_ml/blob/main/notebooks/regressao/ensaios_ml_xgboost.ipynb) |
+| LightGBM | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/guigrandim/ensaios_algoritimos_ml/blob/main/notebooks/regressao/ensaios_ml_lightgbm.ipynb) |
+
+### Notebooks — Clusterização
+
+| Notebook | Abrir |
+|----------|-------|
+| KMeans | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/guigrandim/ensaios_algoritimos_ml/blob/main/notebooks/clusterizacao/ensaios_clustering_kmeans.ipynb) |
+| Affinity Propagation | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/guigrandim/ensaios_algoritimos_ml/blob/main/notebooks/clusterizacao/ensaios_clustering_ap.ipynb) |
+
 ---
 
-## 5. Resultados — Classificação
+## 6. Resultados — Classificação
 
 **Métricas no conjunto de teste (dados nunca vistos durante treino/validação)**
 
@@ -109,7 +207,7 @@ ml_trials_algorithm/
 
 ---
 
-## 6. Resultados — Regressão
+## 7. Resultados — Regressão
 
 **Métricas no conjunto de teste (dados nunca vistos durante treino/validação)**
 
@@ -134,7 +232,7 @@ ml_trials_algorithm/
 
 ---
 
-## 7. Resultados — Clusterização
+## 8. Resultados — Clusterização
 
 **Avaliação pelo Silhouette Score** (quanto mais próximo de 1, melhor a separação entre clusters)
 
@@ -172,7 +270,7 @@ ml_trials_algorithm/
 
 ---
 
-## 8. Comparativo Final por Categoria
+## 9. Comparativo Final por Categoria
 
 | Categoria | Melhor Algoritmo | Métrica Principal |
 |-----------|-----------------|-------------------|
@@ -182,7 +280,7 @@ ml_trials_algorithm/
 
 ---
 
-## 9. Conclusões
+## 10. Conclusões
 
 ### Classificação
 - **Random Forest** dominou com F1-Score de **0.9591**, seguido de perto pela Decision Tree (0.9489). Ambos os modelos baseados em árvore superaram regressão logística e KNN por larga margem, indicando que os dados possuem **fronteiras de decisão não-lineares** bem capturadas por métodos ensemble.
@@ -200,7 +298,7 @@ ml_trials_algorithm/
 
 ---
 
-## 10. Próximos Passos
+## 11. Próximos Passos
 
 ### Classificação
 - [ ] 🔧 Testar **XGBoost e LightGBM** para classificação — potencial de superar Random Forest com tuning adequado
